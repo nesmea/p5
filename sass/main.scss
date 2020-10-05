@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'playfair';
+  src: url('../fonts/playfair/playfairdisplaysc-bolditalic-webfont.woff2') format('woff2'),
+  url('../fonts/playfair/playfairdisplaysc-bolditalic-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'grand_hotelregular';
+  src: url('../fonts/grandhotel/grandhotel-regular-webfont.woff2') format('woff2'),
+  url('../fonts/grandhotel/grandhotel-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#title_cameras {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0 35px 0;
+    &_texte {
+      display: flex;
+      justify-content: center;
+      font-family: "grand_hotelregular";
+    }
+    &_sepa{
+      position: relative;
+      left: 41.5%;
+      top: 10%;
+      height: 2px;
+      width: 20em;
+      background: slategrey;
+    }
+}
+
+#corps_page {
+  height: 100%;
+}

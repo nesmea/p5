@@ -1,0 +1,22 @@
+{
+  "name": "p5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch D:/dev/p5/sass/main.scss D:/dev/p5/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nesmea/p5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nesmea/p5/issues"
+  },
+  "homepage": "https://github.com/nesmea/p5#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.2"
+  }
+}
