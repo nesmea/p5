@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "playfair";
+  src: url("../../fonts/playfair/playfairdisplaysc-bolditalic-webfont.woff2") format("woff2"), url("../../fonts/playfair/playfairdisplaysc-bolditalic-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "grand_hotelregular";
+  src: url("../../fonts/grandhotel/grandhotel-regular-webfont.woff2") format("woff2"), url("../../fonts/grandhotel/grandhotel-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "fulbo";
+  src: url("../../fonts/fulbo/fulbo-premier-webfont.woff2") format("woff2"), url("../../fonts/fulbo/fulbo-premier-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+#page_total h1 {
+  font-family: "grand_hotelregular";
+  padding-top: 3rem;
+  font-size: 6.5rem;
+}
+#page_total > #panier_part {
+  height: 100%;
+}
+#page_total > #panier_part > table {
+  margin: auto;
+  width: 50%;
+  margin-top: 5em;
+  padding: 1em;
+  box-shadow: 0px 2px 8px 5px rgba(0, 0, 0, 0.15);
+}
+#page_total > #form_part {
+  height: 100%;
+}
+#page_total > #form_part > form {
+  margin: auto;
+  width: 50%;
+  margin-top: 5em;
+  padding: 1em;
+  box-shadow: 0px 2px 8px 5px rgba(0, 0, 0, 0.15);
+}
+
+/*# sourceMappingURL=style.css.map */

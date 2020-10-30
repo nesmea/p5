@@ -1,0 +1,29 @@
+@import "../fonts/fonts.scss";
+
+#page_total{
+  & h1 {
+    font-family: "grand_hotelregular";
+    padding-top: 3rem;
+    font-size: 6.5rem;
+  }
+  & > #panier_part {
+    height: 100%;
+    & > table {
+      margin: auto;
+      width: 50%;
+      margin-top: 5em;
+      padding: 1em;
+      box-shadow: 0px 2px 8px 5px rgba(0, 0, 0, 0.15);
+    }
+  }
+  & > #form_part {
+    height: 100%;
+    & > form {
+      margin: auto;
+      width: 50%;
+      margin-top: 5em;
+      padding: 1em;
+      box-shadow: 0px 2px 8px 5px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
