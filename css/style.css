@@ -10,6 +10,12 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "fulbo";
+  src: url("../fonts/fulbo/fulbo-premier-webfont.woff2") format("woff2"), url("../fonts/fulbo/fulbo-premier-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 #title_cameras {
   display: flex;
   flex-direction: column;
@@ -28,13 +34,16 @@
   width: 20em;
   background: slategrey;
 }
+#title_cameras h1 {
+  font-size: 6.5rem;
+}
 
 #corps_page {
   height: 100%;
 }
 
-.h1_custom {
-  font-size: 6.5rem !important;
+#cards_container div.card {
+  padding: 0 !important;
 }
 
 /*# sourceMappingURL=style.css.map */

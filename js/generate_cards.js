@@ -20,33 +20,33 @@ function generateCards(cameras) {
         let cameraImage = document.createElement('IMG');
         cameraImage.setAttribute("src", cameras[i].imageUrl);
         cameraImage.setAttribute('width', "100%");
-        container.appendChild(cameraImage);
+        // container.appendChild(cameraImage);
 
         let cameraName = document.createElement('h2');
         cameraName.textContent = cameras[i].name;
         cameraName.classList.add('py-3');
-        container.appendChild(cameraName);
+        // container.appendChild(cameraName);
 
         let cameraLenses = document.createElement('p');
         cameraLenses.textContent = cameras[i].lenses;
         let cameraLensesName = document.createElement('h4');
         cameraLensesName.textContent = "Lenses :";
-        container.appendChild(cameraLensesName);
-        container.appendChild(cameraLenses);
+        // container.appendChild(cameraLensesName);
+        // container.appendChild(cameraLenses);
 
         let cameraDescription = document.createElement('p');
         cameraDescription.textContent = cameras[i].description;
         let cameraDescriptionName = document.createElement('h4');
         cameraDescriptionName.textContent = "Description :";
-        container.appendChild(cameraDescriptionName);
-        container.appendChild(cameraDescription);
+        // container.appendChild(cameraDescriptionName);
+        // container.appendChild(cameraDescription);
 
         let cameraPrice = document.createElement('p');
         cameraPrice.textContent = cameras[i].price + "€";
         let cameraPriceName = document.createElement('h4');
         cameraPriceName.textContent = "Price :";
-        container.appendChild(cameraPriceName);
-        container.appendChild(cameraPrice);
+        // container.appendChild(cameraPriceName);
+        // container.appendChild(cameraPrice);
 
         let cameraProduct = document.createElement('a');
         cameraProduct.textContent = "Personnaliser";
@@ -54,7 +54,7 @@ function generateCards(cameras) {
         cameraProduct.classList.add('btn', 'btn-dark');
 
         let cardsBody = document.createElement('div');
-        cardsBody.classList.add('card', 'col-4', 'd-flex', 'mx-2', 'my-2');
+        cardsBody.classList.add('card', 'col-4', 'd-flex', 'mx-2', 'my-2', 'p-0');
         cardsBody.appendChild(cameraImage);
         cardsBody.appendChild(cameraName);
         cardsBody.appendChild(cameraLensesName);

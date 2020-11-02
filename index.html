@@ -4,9 +4,9 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
+        <script type="text/javascript" src="js/generate_cards.js"></script>
     </head>
 
-    <body>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
@@ -18,8 +18,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active"><a href="index.html" class="nav-link">Accueil</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Produits</a></li>
-                        <li class="nav-item"><a href="#" class="nav-link">Panier</a></li>
+                        <li class="nav-item"><a href="panier/index.html" class="nav-link">Panier</a></li>
                     </ul>
                 </div>
             </div>
@@ -32,72 +31,8 @@
             <div id="title_cameras_sepa"></div>
         </div>
 
-        <div class="container-fluid" id="corps_page">
-            <div class="row justify-content-center">
-                <div class="card col-4 my-2 mx-2">
-                    <img class="card-img-top" id="zurss_img" src="img/.." alt="">
-                    <div class="card-body">
-                        <h2 class="card-title">Card title</h2>
-                        <p class="card-text camera_name"></p>
-                        <p class="card-text camera_lenses"></p>
-                        <p class="card-text camera_price"></p>
-                        <p class="card-text camera_description"></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card col-4 my-2 mx-2">
-                    <img class="card-img-top" id="hirsch_img" src="img/.." alt="">
-                    <div class="card-body">
-                        <h2 class="card-title">Card title</h2>
-                        <p class="card-text camera_name"></p>
-                        <p class="card-text camera_lenses"></p>
-                        <p class="card-text camera_price"></p>
-                        <p class="card-text camera_description"></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="card col-4 my-2 mx-2">
-                    <img class="card-img-top" id="franck_img" src="img/.." alt="">
-                    <div class="card-body">
-                        <h2 class="card-title">Card title</h2>
-                        <p class="card-text camera_name"></p>
-                        <p class="card-text camera_lenses"></p>
-                        <p class="card-text camera_price"></p>
-                        <p class="card-text camera_description"></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card col-4 my-2 mx-2">
-                    <img class="card-img-top" id="kuros_img" src="img/.." alt="">
-                    <div class="card-body">
-                        <h2 class="card-title">Card title</h2>
-                        <p class="card-text camera_name"></p>
-                        <p class="card-text camera_lenses"></p>
-                        <p class="card-text camera_price"></p>
-                        <p class="card-text camera_description"></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row justify-content-center">
-                <div class="card col-4 my-2 mx-2">
-                    <img class="card-img-top" id="katatone_img" src="img/.." alt="">
-                    <div class="card-body">
-                        <h2 class="card-title">Card title</h2>
-                        <p class="card-text camera_name"></p>
-                        <p class="card-text camera_lenses"></p>
-                        <p class="card-text camera_price"></p>
-                        <p class="card-text camera_description"></p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
+        <div class="container-fluid text-center" id="corps_page">
+            <div class="d-flex flex-wrap justify-content-center" id="cards_container"></div>
         </div>
 
         <footer class="page-footer font-small">
@@ -106,49 +41,4 @@
             </div>
         </footer>
     </body>
-
-    <script>
-        let requestURL = 'http://localhost:3000/api/cameras';
-        let request = new XMLHttpRequest();
-        request.open('GET', requestURL);
-        request.responseType = 'json';
-        request.send();
-
-        request.onload = function() {
-        let camerasVintage = request.response;
-        totalCamera(camerasVintage);
-        }
-
-        function totalCamera(jsonObj){
-        let cameras = jsonObj['camera'];
-
-        for (let i = 0; i < cameras.length; i++) {
-            let cardBootstrap = document.getElementsByClassName('card')
-            let cameraImage = document.getElementsByClassName('card-img-top');
-            let cameraName = document.getElementsByClassName('camera_name');
-            let cameraLenses = document.getElementsByClassName('camera_lenses');
-            let cameraPrice = document.getElementsByClassName('camera_price');
-            let cameraDescription = document.getElementsByClassName('camera_description');
-
-            cameraImage.textContent = cameras[i].imageURL;
-            cameraName.textContent = 'name :' + cameras[i].name;
-            cameraLenses.textContent = 'Lenses :' + cameras[i].lenses;
-            cameraPrice.textContent = 'Price :' + cameras[i].price;
-            cameraDescription.textContent = 'Description :' + cameras[i].description;
-
-            let lenses = cameras[i].lenses;
-            for (let j = 0; j < lenses.length; j++) {
-                let listItem = document.createElement('li');
-                listItem.textContent = lenses[j];
-                cameraLenses.appendChild(listItem);
-            }
-
-            cardBootstrap.appendChild(cameraImage);
-            cardBootstrap.appendChild(cameraName);
-            cardBootstrap.appendChild(cameraLenses);
-            cardBootstrap.appendChild(cameraPrice);
-            cardBootstrap.appendChild(cameraDescription);
-            }
-        }
-    </script>
 </html>

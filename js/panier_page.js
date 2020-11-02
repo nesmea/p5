@@ -68,7 +68,7 @@ if (panier !== null) {
 } else {
     // SINON, SI LE PANIER N'EXISTE PAS, UN MESSAGE PANIER VIDE APPARAIT A LA PLACE DU TABLEAU ET LE FORMULAIRE DISPARAIT
     let formulaire = document.getElementById("form_part");
-    formulaire.classList.add("d-none");
+    formulaire.classList.add('d-none');
 
     let divPanierVide = document.getElementById('message_vide');
     let msgPanierVide = document.createElement('p');
