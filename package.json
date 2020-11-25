@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch D:/dev/p5/sass/main.scss D:/dev/p5/css/style.css"
+    "sass": "sass --watch D:/dev/p5/sass/main.scss D:/dev/p5/css/style.css",
+    "sass-panier": "sass --watch D:/dev/p5/panier/sass/style.scss D:/dev/p5/panier/css/style.css"
   },
   "repository": {
     "type": "git",

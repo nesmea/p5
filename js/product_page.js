@@ -41,7 +41,7 @@ function generateProduct(camera){
         alert("Produit ajouté au panier !");
 
         let getPanier = localStorage.getItem("panier");
-        let panier = [{name : camera.name, lenses : textSelect, price : camera.price + "€"}];
+        let panier = [{name : camera.name, lenses : textSelect, price : camera.price + "€", id : camera._id}];
         if (getPanier !== null){
             panier = panier.concat(JSON.parse(getPanier));
         }
