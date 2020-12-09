@@ -1,18 +1,6 @@
 @font-face {
-  font-family: "playfair";
-  src: url("../fonts/playfair/playfairdisplaysc-bolditalic-webfont.woff2") format("woff2"), url("../fonts/playfair/playfairdisplaysc-bolditalic-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
   font-family: "grand_hotelregular";
   src: url("../fonts/grandhotel/grandhotel-regular-webfont.woff2") format("woff2"), url("../fonts/grandhotel/grandhotel-regular-webfont.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "fulbo";
-  src: url("../fonts/fulbo/fulbo-premier-webfont.woff2") format("woff2"), url("../fonts/fulbo/fulbo-premier-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -24,22 +12,61 @@
 #title_cameras_texte {
   display: flex;
   justify-content: center;
-  font-family: "grand_hotelregular";
+  font-family: "grand_hotelregular", sans-serif;
 }
 #title_cameras_sepa {
-  position: relative;
-  left: 41.5%;
-  top: 10%;
+  margin: auto;
   height: 2px;
   width: 20em;
   background: slategrey;
 }
+@media (max-width: 390px) {
+  #title_cameras_sepa {
+    width: 15em;
+  }
+}
 #title_cameras h1 {
   font-size: 6.5rem;
+}
+@media (max-width: 750px) {
+  #title_cameras h1 {
+    font-size: 70px;
+  }
+}
+@media (max-width: 520px) {
+  #title_cameras h1 {
+    font-size: 50px;
+  }
+}
+@media (max-width: 390px) {
+  #title_cameras h1 {
+    font-size: 35px;
+  }
 }
 
 #corps_page {
   height: 100%;
+}
+#corps_page #cards_container {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+@media (max-width: 800px) {
+  #corps_page #cards_container {
+    flex-direction: column;
+    margin: auto;
+  }
+}
+#corps_page #cards_container > div.card {
+  margin: 0 10px 10px 0;
+  width: 40%;
+}
+@media (max-width: 800px) {
+  #corps_page #cards_container > div.card {
+    margin: auto;
+    margin-top: 1em;
+    width: 70%;
+  }
 }
 
 #cards_container div.card {

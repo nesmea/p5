@@ -1,102 +1,112 @@
 <!DOCTYPE HTML>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">Orinoco</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="oi oi-menu">MENU</span>
-                </button>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html">Orinoco</a>
 
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a href="../index.html" class="nav-link">Accueil</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container-fluid" id="page_total">
-            <h1 class="text-center" id="titlePanier">Votre panier</h1>
-
-            <div id="panier_part">
-                <table class="table">
-                    <thead class="text-center">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Lense</th>
-                            <th scope="col">Price</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center"></tbody>
-                </table>
-            </div>
-
-            <div class="text-center" id="message_vide">
-                <p>Votre panier est vide !</p>
-            </div>
-
-            <div id="form_part">
-                <form id="formulaire">
-                    <div class="form-group text-center">
-                        <label>First Name</label>
-                        <input class="form-control" id="input1" type="text" placeholder="John" required>
-                    </div>
-                    <div class="form-group text-center">
-                        <label>Last name</label>
-                        <input class="form-control" id="input2" type="text" placeholder="Dupont" required>
-                    </div>
-                    <div class="form-group text-center">
-                        <label>Address</label>
-                        <input class="form-control" id="input3" type="text" placeholder="8 rue des lilas" required>
-                    </div>
-                    <div class="form-group text-center">
-                        <label>City</label>
-                        <input class="form-control" id="input4" type="text" placeholder="Paris" required>
-                    </div>
-                    <div class="form-group text-center">
-                        <label>Email address</label>
-                        <input class="form-control" id="input5" type="email" aria-describedby="emailHelp" placeholder="xxxxx@xxxx.xx" required>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary" id="buttonSubmit">Submit</button>
-                    </div>
-                </form>
-            </div>
-
-            <div id="validation" class="container-fluid text-center p-3">
-                <h1 class="h1Cust">Merci pour votre commande !</h1>
-                <hr>
-                <h2>Commande envoyée à :</h2>
-                <p class="font-weight-bold">Prénom :</p>
-                <p id="prenomClient"></p>
-                <p class="font-weight-bold">Nom :</p>
-                <p id="nomClient"></p>
-                <p class="font-weight-bold">Adresse :</p>
-                <p id="adresseClient"></p>
-                <p class="font-weight-bold">Ville :</p>
-                <p id="villeClient"></p>
-                <hr>
-                <h3 class="h1Cust">Votre numéro de commande est le suivant :</h3>
-                <p id="numeroCommande"></p>
-
-                <button type="button" class="btn btn-outline-danger d-flex m-auto"><a href="../index.html">Revenir à l'accueil</a></button>
-            </div>
+        <div class="navbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="../index.html" class="nav-link">Accueil</a></li>
+            </ul>
         </div>
+    </div>
+</nav>
 
-        <footer class="page-footer font-small">
-            <div class="footer-copyright text-center py-3">© 2020 Copyright:
-                <a href="https://orinoco.alexis-nesme.com/"> Orinoco.com</a>
+<!-- Le panier apparait dans cette partie -->
+<div class="container-fluid" id="page_total">
+    <h1 class="text-center" id="titlePanier">Votre panier</h1>
+
+    <!-- Le tableau contenant les objets ajoutés au panier -->
+    <div id="panier_part">
+        <table class="table">
+            <thead class="text-center">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Lense</th>
+                <th scope="col">Price</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody class="text-center"></tbody>
+        </table>
+    </div>
+
+    <!-- Le formulaire pour finaliser la commande -->
+    <div id="form_part">
+        <form id="formulaire">
+            <div class="form-group text-center">
+                <label>First Name</label>
+                <input class="form-control" id="inputFName" type="text" placeholder="John" required>
             </div>
-        </footer>
+            <div class="form-group text-center">
+                <label>Last name</label>
+                <input class="form-control" id="inputLName" type="text" placeholder="Dupont" required>
+            </div>
+            <div class="form-group text-center">
+                <label>Address</label>
+                <input class="form-control" id="inputAddress" type="text" placeholder="8 rue des lilas" required>
+            </div>
+            <div class="form-group text-center">
+                <label>City</label>
+                <input class="form-control" id="inputCity" type="text" placeholder="Paris" required>
+            </div>
+            <div class="form-group text-center">
+                <label>Email address</label>
+                <input class="form-control" id="inputEmail" type="email" aria-describedby="emailHelp"
+                       placeholder="xxxxx@xxxx.xx" required>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" id="buttonSubmit">Submit</button>
+            </div>
+        </form>
+    </div>
 
-        <script type="text/javascript" src="../js/panier_page.js"></script>
-    </body>
+    <!-- Si le panier est vide, nous faisons apparaître ce message et faisons disparaître les deux élements ci-dessus -->
+    <div class="text-center" id="message_vide">
+        <p>Votre panier est vide !</p>
+    </div>
+
+    <!-- Remerciements et récapitulatif de la commande lorsque le formulaire est envoyé -->
+    <div id="validation" class="container-fluid text-center p-3">
+        <h1 class="h1Cust">Merci pour votre commande !</h1>
+        <hr>
+        <h2>Commande envoyée à :</h2>
+        <p class="font-weight-bold">Prénom :</p>
+        <p id="prenomClient"></p>
+        <p class="font-weight-bold">Nom :</p>
+        <p id="nomClient"></p>
+        <p class="font-weight-bold">Adresse :</p>
+        <p id="adresseClient"></p>
+        <p class="font-weight-bold">Ville :</p>
+        <p id="villeClient"></p>
+        <hr>
+        <h3>Prix total de la commande :</h3>
+        <p id="prix"></p>
+        <h3 class="h1Cust">Votre numéro de commande est le suivant :</h3>
+        <p id="numeroCommande"></p>
+
+        <button type="button" class="btn btn-outline-danger d-flex m-auto"><a href="../index.html">Revenir à
+            l'accueil</a></button>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="page-footer font-small">
+    <div class="footer-copyright text-center">© 2020 Copyright:
+        <a href="https://orinoco.alexis-nesme.com/"> Orinoco.com</a>
+    </div>
+</footer>
+
+<script type="text/javascript" src="../js/panier_page.js"></script>
+</body>
 </html>

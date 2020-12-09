@@ -1,33 +1,72 @@
- @import "../fonts/fonts.scss";
+@font-face {
+  font-family: 'grand_hotelregular';
+  src: url('../fonts/grandhotel/grandhotel-regular-webfont.woff2') format('woff2'),
+  url('../fonts/grandhotel/grandhotel-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
-#title_cameras {
-  display: flex;
-  flex-direction: column;
-  margin: 30px 0 35px 0;
+  #title_cameras {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0 35px 0;
+
     &_texte {
       display: flex;
       justify-content: center;
-      font-family: "grand_hotelregular";
+      font-family: "grand_hotelregular", sans-serif;
     }
-    &_sepa{
-      position: relative;
-      left: 41.5%;
-      top: 10%;
+
+    &_sepa {
+      margin: auto;
       height: 2px;
       width: 20em;
       background: slategrey;
+        @media (max-width: 390px) {
+          width: 15em;
+        }
     }
+
     & h1 {
       font-size: 6.5rem;
+        @media (max-width: 750px) {
+          font-size: 70px;
+        }
+        @media (max-width: 520px) {
+          font-size: 50px;
+        }
+        @media (max-width: 390px) {
+          font-size: 35px;
+        }
     }
-}
-
-#corps_page {
-  height: 100%;
-}
-
-#cards_container{
-  & div.card {
-    padding: 0!important;
   }
-}
+
+
+
+  #corps_page {
+    height: 100%;
+    & #cards_container {
+      justify-content: center;
+      flex-wrap: wrap;
+      @media (max-width:800px) {
+        flex-direction: column;
+        margin:auto;
+      }
+      & > div.card {
+        margin: 0 10px 10px 0;
+        width: 40%;
+        @media (max-width: 800px){
+          margin: auto;
+          margin-top: 1em;
+          width: 70%;
+        }
+      }
+    }
+  }
+
+
+  #cards_container{
+    & div.card {
+      padding: 0!important;
+    }
+  }

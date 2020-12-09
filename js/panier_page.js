@@ -9,6 +9,14 @@ function changeDisplay() {
     validation.classList.add("d-none");
 }
 
+function calculPrix(products) {
+    let totalPrice = 0;
+    for (let i = 0; i < products.length; i++) {
+        totalPrice += products[i].price;
+    }
+    return totalPrice;
+}
+
 // SI LE PANIER EXISTE ->
 if (panier !== null) {
 
@@ -29,7 +37,7 @@ if (panier !== null) {
 
         // CREATION DES LIGNES DU TABLEAU EN FONCTION DU NOMBRES D'OBJETS DANS LE PANIER
         let indexLigne = document.createElement('th');
-        indexLigne.innerHTML = i + 1;
+        indexLigne.textContent = i + 1;
 
         let nameProduct = document.createElement('td');
         nameProduct.textContent = panier[i].name;
@@ -42,7 +50,7 @@ if (panier !== null) {
 
         let suppTab = document.createElement("button");
         suppTab.innerHTML = "Delete";
-        suppTab.classList.add("btn", "btn-danger", "mt-1");
+        suppTab.classList.add("btn", "btn-danger");
         suppTab.onclick = function () {
             if (panier.length >= 2) {
                 alert('Le produit a été retiré du panier !');
@@ -76,49 +84,51 @@ if (panier !== null) {
         event.preventDefault()
         let formData = {
             contact: {
-                firstName: document.getElementById("input1").value,
-                lastName: document.getElementById("input2").value,
-                city: document.getElementById("input3").value,
-                address: document.getElementById("input3").value,
-                email: document.getElementById("input5").value,
+                firstName: document.getElementById("inputFName").value,
+                lastName: document.getElementById("inputLName").value,
+                city: document.getElementById("inputCity").value,
+                address: document.getElementById("inputAddress").value,
+                email: document.getElementById("inputEmail").value,
             },
-            products : productIds,
+            products: productIds,
         };
-        let request = new XMLHttpRequest();
-        request.open("POST", "http://localhost:3000/api/cameras/order");
-        request.setRequestHeader("Content-Type", "application/json");
-        request.send(JSON.stringify(formData));
 
-        request.onreadystatechange = function () {
-            let response = JSON.parse(request.responseText);
-            let url = new URL('http://localhost:63342/p5/panier/index.html');
-            url.hash = response.orderId;
-            let lessHash = url.hash.substring(1);
-            console.log(response);
+        fetch("http://localhost:3000/api/cameras/order", {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData),
+            method: "POST",
+        })
+            .then(response => response.json())
+            .then(
+                (response) => {
+                    changeDisplay();
 
-            // location.reload();
-            changeDisplay();
+                    let prenomClient = document.getElementById("prenomClient");
+                    prenomClient.textContent = response.contact.firstName;
 
-            let prenomClient = document.getElementById("prenomClient");
-            prenomClient.textContent = response.contact.lastName;
+                    let nomClient = document.getElementById("nomClient");
+                    nomClient.textContent = response.contact.lastName;
 
-            let nomClient = document.getElementById("nomClient");
-            nomClient.textContent = response.contact.lastName;
+                    let adresseClient = document.getElementById("adresseClient");
+                    adresseClient.textContent = response.contact.address;
 
-            let adresseClient = document.getElementById("adresseClient");
-            adresseClient.textContent = response.contact.address;
+                    let villeClient = document.getElementById("villeClient");
+                    villeClient.textContent = response.contact.city;
 
-            let villeClient = document.getElementById("villeClient");
-            villeClient.textContent = response.contact.city;
+                    let validation = document.getElementById("validation");
+                    validation.classList.add("d-block");
+                    validation.style.marginTop = "3em";
+                    let titlePanier = document.getElementById("titlePanier");
+                    titlePanier.classList.add("d-none");
 
-            let validation = document.getElementById("validation");
-            validation.classList.add("d-block");
-            validation.style.marginTop = "15em";
-            let titlePanier = document.getElementById("titlePanier");
-            titlePanier.classList.add("d-none");
-            let numeroCommande = document.getElementById("numeroCommande");
-            numeroCommande.textContent = lessHash;
-        };
+                    let prixTotal = document.getElementById("prix");
+                    prixTotal.innerHTML = calculPrix(response.products) + "€";
+
+                    let numeroCommande = document.getElementById("numeroCommande");
+                    numeroCommande.textContent = response.orderId;
+                })
     }
 } else {
     changeDisplay();
