@@ -1,14 +1,20 @@
+// Recuperation in DOM of all elements who will be used in the script
 let panier = JSON.parse(localStorage.getItem("panier"));
-let formPart = document.getElementById('form_part');
+let containerValidation = document.getElementById("container-validation");
+let containerPanier = document.getElementById("panier_part");
+let containerForm = document.getElementById('form_part');
+let formulaire = document.getElementById("formulaire");
 let panierPart = document.querySelector('table');
 let validation = document.getElementById("validation");
 
+// Used to change the display of 3 elements in the page
 function changeDisplay() {
-    panierPart.classList.add('d-none');
-    formPart.classList.add('d-none');
-    validation.classList.add("d-none");
+    containerPanier.classList.add('d-none');
+    containerForm.classList.add('d-none');
+    containerValidation.classList.add("d-none");
 }
 
+// Used to calcul the total price of the cart
 function calculPrix(products) {
     let totalPrice = 0;
     for (let i = 0; i < products.length; i++) {
@@ -17,9 +23,25 @@ function calculPrix(products) {
     return totalPrice;
 }
 
-// SI LE PANIER EXISTE ->
-if (panier !== null) {
+// Used to delete a line of the cart on click on the button "delete"
+function deleteCartLine () {
+    if (panier.length >= 2) {
+        alert('Le produit a été retiré du panier !');
+        let index = panier.indexOf(panier[i]);
+        panier.splice(index, 1);
+        localStorage.setItem('panier', JSON.stringify(panier));
+        location.reload();
+    } else if (panier.length === 1) {
+        alert('Le produit a été retiré du panier !');
+        localStorage.removeItem("panier");
+        location.reload();
+        changeDisplay();
+        panierVide.classList.add("d-block");
+    }
+}
 
+// If the cart exist :
+if (panier !== null) {
     validation.classList.add("d-none");
 
     let panierVide = document.getElementById("message_vide");
@@ -33,9 +55,9 @@ if (panier !== null) {
         productIds.push(panier[i].id);
     }
 
+    // For each object in the cart, I create a line in the table with all her details
     for (let i = 0; i < panier.length; i++) {
 
-        // CREATION DES LIGNES DU TABLEAU EN FONCTION DU NOMBRES D'OBJETS DANS LE PANIER
         let indexLigne = document.createElement('th');
         indexLigne.textContent = i + 1;
 
@@ -51,23 +73,8 @@ if (panier !== null) {
         let suppTab = document.createElement("button");
         suppTab.innerHTML = "Delete";
         suppTab.classList.add("btn", "btn-danger");
-        suppTab.onclick = function () {
-            if (panier.length >= 2) {
-                alert('Le produit a été retiré du panier !');
-                let index = panier.indexOf(panier[i]);
-                panier.splice(index, 1);
-                localStorage.setItem('panier', JSON.stringify(panier));
-                location.reload();
-            } else if (panier.length === 1) {
-                alert('Le produit a été retiré du panier !');
-                localStorage.removeItem("panier");
-                location.reload();
-                changeDisplay();
-                panierVide.classList.add("d-block");
-            }
-        }
+        suppTab.onclick = deleteCartLine();
 
-        // AJOUT DE TOUS LES ELEMENTS DANS LA LIGNE DU TABLEAU ET DANS TABLEAU
         let ligneTableau = document.createElement('tr');
         ligneTableau.appendChild(indexLigne);
         ligneTableau.appendChild(nameProduct);
@@ -79,7 +86,7 @@ if (panier !== null) {
         panierPart.appendChild(tableau);
     }
 
-    let formulaire = document.getElementById('formulaire');
+    // Request POST for sending the order of the client on the server
     formulaire.onsubmit = function (event) {
         event.preventDefault()
         let formData = {
@@ -104,32 +111,27 @@ if (panier !== null) {
             .then(
                 (response) => {
                     changeDisplay();
+                    validation.classList.add('d-block');
 
-                    let prenomClient = document.getElementById("prenomClient");
-                    prenomClient.textContent = response.contact.firstName;
+                    document.getElementById("prenomClient").textContent = response.contact.firstName;
 
-                    let nomClient = document.getElementById("nomClient");
-                    nomClient.textContent = response.contact.lastName;
+                    document.getElementById("nomClient").textContent = response.contact.lastName;
 
-                    let adresseClient = document.getElementById("adresseClient");
-                    adresseClient.textContent = response.contact.address;
+                    document.getElementById("adresseClient").textContent = response.contact.address;
 
-                    let villeClient = document.getElementById("villeClient");
-                    villeClient.textContent = response.contact.city;
+                    document.getElementById("villeClient").textContent = response.contact.city;
 
-                    let validation = document.getElementById("validation");
-                    validation.classList.add("d-block");
-                    validation.style.marginTop = "3em";
-                    let titlePanier = document.getElementById("titlePanier");
-                    titlePanier.classList.add("d-none");
+                    document.getElementById("validation").classList.add("d-block");
 
-                    let prixTotal = document.getElementById("prix");
-                    prixTotal.innerHTML = calculPrix(response.products) + "€";
+                    document.getElementById("titlePanier").classList.add("d-none");
 
-                    let numeroCommande = document.getElementById("numeroCommande");
-                    numeroCommande.textContent = response.orderId;
+                    document.getElementById("prix").innerHTML = calculPrix(response.products) + "€";
+
+                    document.getElementById("numeroCommande").textContent = response.orderId;
                 })
     }
 } else {
+    // Else, if the cart don't exist, I hide all elements and I put a text "Cart is empty"
     changeDisplay();
+    validation.classList.add('d-none');
 }

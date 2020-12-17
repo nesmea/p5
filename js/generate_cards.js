@@ -1,9 +1,11 @@
+// Used to createElement where is necessary
 function createElement(element, textContent) {
-    let maBalise = document.createElement(element);
-    maBalise.textContent = textContent;
-    return maBalise;
+    let newElement = document.createElement(element);
+    newElement.textContent = textContent;
+    return newElement;
 }
 
+// Request GET for recuperation of all cameras and her details
 fetch("http://localhost:3000/api/cameras")
     .then(response => response.json())
     .then(

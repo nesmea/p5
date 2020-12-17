@@ -1,7 +1,9 @@
 <!DOCTYPE HTML>
 <html lang="fr">
 <head>
+    <title>Orinoco | Votre Panier</title>
     <meta charset="UTF-8">
+    <script src="../js/panier_page.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
@@ -27,7 +29,7 @@
 
     <!-- Le tableau contenant les objets ajoutés au panier -->
     <div id="panier_part">
-        <table class="table">
+        <table class="table" id="tab_panier">
             <thead class="text-center">
             <tr>
                 <th scope="col">#</th>
@@ -62,8 +64,7 @@
             </div>
             <div class="form-group text-center">
                 <label>Email address</label>
-                <input class="form-control" id="inputEmail" type="email" aria-describedby="emailHelp"
-                       placeholder="xxxxx@xxxx.xx" required>
+                <input class="form-control" id="inputEmail" type="email" placeholder="xxxxx@xxxx.xx" required>
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary" id="buttonSubmit">Submit</button>
@@ -77,26 +78,27 @@
     </div>
 
     <!-- Remerciements et récapitulatif de la commande lorsque le formulaire est envoyé -->
-    <div id="validation" class="container-fluid text-center p-3">
-        <h1 class="h1Cust">Merci pour votre commande !</h1>
-        <hr>
-        <h2>Commande envoyée à :</h2>
-        <p class="font-weight-bold">Prénom :</p>
-        <p id="prenomClient"></p>
-        <p class="font-weight-bold">Nom :</p>
-        <p id="nomClient"></p>
-        <p class="font-weight-bold">Adresse :</p>
-        <p id="adresseClient"></p>
-        <p class="font-weight-bold">Ville :</p>
-        <p id="villeClient"></p>
-        <hr>
-        <h3>Prix total de la commande :</h3>
-        <p id="prix"></p>
-        <h3 class="h1Cust">Votre numéro de commande est le suivant :</h3>
-        <p id="numeroCommande"></p>
+    <div id="container-validation">
+        <div id="validation" class="container-fluid text-center p-3">
+            <h1 class="h1Cust">Merci pour votre commande !</h1>
+            <hr>
+            <h2>Commande envoyée à :</h2>
+            <p class="font-weight-bold">Prénom :</p>
+            <p id="prenomClient"></p>
+            <p class="font-weight-bold">Nom :</p>
+            <p id="nomClient"></p>
+            <p class="font-weight-bold">Adresse :</p>
+            <p id="adresseClient"></p>
+            <p class="font-weight-bold">Ville :</p>
+            <p id="villeClient"></p>
+            <hr>
+            <h3>Prix total de la commande :</h3>
+            <p id="prix"></p>
+            <h3 class="h1Cust">Votre numéro de commande est le suivant :</h3>
+            <p id="numeroCommande"></p>
 
-        <button type="button" class="btn btn-outline-danger d-flex m-auto"><a href="../index.html">Revenir à
-            l'accueil</a></button>
+            <a href="../index.html" class="btn btn-outline-danger text-center">Revenir à l'accueil</a>
+        </div>
     </div>
 </div>
 
@@ -107,6 +109,5 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="../js/panier_page.js"></script>
 </body>
 </html>
