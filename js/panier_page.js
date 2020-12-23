@@ -1,44 +1,8 @@
 // Recuperation in DOM of all elements who will be used in the script
 let panier = JSON.parse(localStorage.getItem("panier"));
-let containerValidation = document.getElementById("container-validation");
-let containerPanier = document.getElementById("panier_part");
-let containerForm = document.getElementById('form_part');
 let formulaire = document.getElementById("formulaire");
 let panierPart = document.querySelector('table');
 let validation = document.getElementById("validation");
-
-// Used to change the display of 3 elements in the page
-function changeDisplay() {
-    containerPanier.classList.add('d-none');
-    containerForm.classList.add('d-none');
-    containerValidation.classList.add("d-none");
-}
-
-// Used to calcul the total price of the cart
-function calculPrix(products) {
-    let totalPrice = 0;
-    for (let i = 0; i < products.length; i++) {
-        totalPrice += products[i].price;
-    }
-    return totalPrice;
-}
-
-// Used to delete a line of the cart on click on the button "delete"
-function deleteCartLine () {
-    if (panier.length >= 2) {
-        alert('Le produit a été retiré du panier !');
-        let index = panier.indexOf(panier[i]);
-        panier.splice(index, 1);
-        localStorage.setItem('panier', JSON.stringify(panier));
-        location.reload();
-    } else if (panier.length === 1) {
-        alert('Le produit a été retiré du panier !');
-        localStorage.removeItem("panier");
-        location.reload();
-        changeDisplay();
-        panierVide.classList.add("d-block");
-    }
-}
 
 // If the cart exist :
 if (panier !== null) {
@@ -73,7 +37,7 @@ if (panier !== null) {
         let suppTab = document.createElement("button");
         suppTab.innerHTML = "Delete";
         suppTab.classList.add("btn", "btn-danger");
-        suppTab.onclick = deleteCartLine();
+        suppTab.onclick = deleteCartLine;
 
         let ligneTableau = document.createElement('tr');
         ligneTableau.appendChild(indexLigne);
@@ -128,6 +92,8 @@ if (panier !== null) {
                     document.getElementById("prix").innerHTML = calculPrix(response.products) + "€";
 
                     document.getElementById("numeroCommande").textContent = response.orderId;
+
+                    localStorage.clear();
                 })
     }
 } else {

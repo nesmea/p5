@@ -1,10 +1,3 @@
-// Used to createElement where is necessary
-function createElement(element, textContent) {
-    let newElement = document.createElement(element);
-    newElement.textContent = textContent;
-    return newElement;
-}
-
 // Request GET for recuperation of all cameras and her details
 fetch("http://localhost:3000/api/cameras")
     .then(response => response.json())
@@ -30,7 +23,7 @@ fetch("http://localhost:3000/api/cameras")
                 let cameraDescriptionName = createElement('h4');
                 cameraDescriptionName.textContent = "Description :";
 
-                let cameraPrice = createElement('p', cameras[i].price + "€");
+                let cameraPrice = createElement('p', cameras[i].price / 100 + "€");
                 let cameraPriceName = createElement('h4', "Price :");
 
                 let cameraProduct = createElement('a', "Personnaliser");

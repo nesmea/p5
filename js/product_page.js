@@ -1,24 +1,3 @@
-// Used to createElement where is necessary
-function createElement(element, textContent) {
-    let newElement = document.createElement(element);
-    newElement.textContent = textContent;
-    return newElement;
-}
-
-// Used to add camera selected in cart (localStorage)
-function addObjectToCart () {
-    let selectElement = document.querySelector("select");
-    let textSelect = selectElement.options[selectElement.selectedIndex].text;
-    alert("Produit ajouté au panier !");
-
-    let getPanier = localStorage.getItem("panier");
-    let panier = [{name : camera.name, lenses : textSelect, price : camera.price + "€", id : camera._id}];
-    if (getPanier !== null){
-        panier = panier.concat(JSON.parse(getPanier));
-    }
-    localStorage.setItem("panier", JSON.stringify(panier));
-}
-
 // Request for recuperation of name and detail of the camera the client selected
 fetch("http://localhost:3000/api/cameras/" + location.hash.substring(1))
     .then(response => response.json())
@@ -41,5 +20,16 @@ fetch("http://localhost:3000/api/cameras/" + location.hash.substring(1))
             }
 
             let addToCart = document.getElementById('ajout-panier');
-            addToCart.onclick = addObjectToCart();
+            addToCart.onclick = function() {
+                let selectElement = document.querySelector("select");
+                let textSelect = selectElement.options[selectElement.selectedIndex].text;
+                alert("Produit ajouté au panier !");
+
+                let getPanier = localStorage.getItem("panier");
+                let panier = [{name : camera.name, lenses : textSelect, price : camera.price / 100 + "€", id : camera._id}];
+                if (getPanier !== null){
+                    panier = panier.concat(JSON.parse(getPanier));
+                }
+                localStorage.setItem("panier", JSON.stringify(panier));
+            };
         })

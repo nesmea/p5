@@ -3,14 +3,12 @@
 <head>
     <title>Orinoco | Votre Panier</title>
     <meta charset="UTF-8">
-    <script src="../js/panier_page.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
         <a class="navbar-brand" href="../index.html">Orinoco</a>
@@ -23,11 +21,9 @@
     </div>
 </nav>
 
-<!-- Le panier apparait dans cette partie -->
 <div class="container-fluid" id="page_total">
     <h1 class="text-center" id="titlePanier">Votre panier</h1>
 
-    <!-- Le tableau contenant les objets ajoutés au panier -->
     <div id="panier_part">
         <table class="table" id="tab_panier">
             <thead class="text-center">
@@ -43,7 +39,6 @@
         </table>
     </div>
 
-    <!-- Le formulaire pour finaliser la commande -->
     <div id="form_part">
         <form id="formulaire">
             <div class="form-group text-center">
@@ -72,12 +67,10 @@
         </form>
     </div>
 
-    <!-- Si le panier est vide, nous faisons apparaître ce message et faisons disparaître les deux élements ci-dessus -->
     <div class="text-center" id="message_vide">
         <p>Votre panier est vide !</p>
     </div>
 
-    <!-- Remerciements et récapitulatif de la commande lorsque le formulaire est envoyé -->
     <div id="container-validation">
         <div id="validation" class="container-fluid text-center p-3">
             <h1 class="h1Cust">Merci pour votre commande !</h1>
@@ -102,12 +95,13 @@
     </div>
 </div>
 
-<!-- FOOTER -->
 <footer class="page-footer font-small">
     <div class="footer-copyright text-center">© 2020 Copyright:
         <a href="https://orinoco.alexis-nesme.com/"> Orinoco.com</a>
     </div>
 </footer>
 
+<script src="../js/functions.js"></script>
+<script src="../js/panier_page.js"></script>
 </body>
 </html>
