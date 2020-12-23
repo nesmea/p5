@@ -6,7 +6,7 @@ fetch("http://localhost:3000/api/cameras")
             let container = document.getElementById('cards_container');
 
             for (let i = 0; i < cameras.length; i++) {
-                let url = new URL('http://localhost:63342/p5/product/product.html');
+                let url = new URL('http://orinoco.alexis-nesme.com/product/product.html');
                 url.hash = cameras[i]._id;
 
                 let cameraImage = createElement('IMG');
